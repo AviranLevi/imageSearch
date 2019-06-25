@@ -1,0 +1,21 @@
+<div class="main-page-search-box">
+  <input
+    class="form-control"
+    placeholder="Type to search images"
+    aria-label="Search"
+    [(ngModel)]="searchQuery"
+  />
+
+  <button
+    class="rounded-lg main-page-search-btn"
+    (click)="searchImages(searchQuery)"
+  >
+    Search
+  </button>
+</div>
+
+<div class="images-container container">
+  <div *ngFor="let image of images" class="image-box">
+    <img src="{{ image.webFormatImageURL }}" class="img-thumbnail" />
+  </div>
+</div>

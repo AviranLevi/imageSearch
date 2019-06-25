@@ -1,0 +1,27 @@
+:root {
+  --main: #8e2de2;
+  --second: #4a00e0;
+}
+
+.sign-up-buttons-box {
+  display: grid;
+  grid-gap: 5vh;
+}
+
+.sign-up-btn {
+  border: none;
+  color: white;
+  text-transform: capitalize;
+  background: none;
+  border: white 1px solid;
+  border-radius: 3px;
+  height: 100%;
+  padding: 1vh 0;
+  transition: 0.4s;
+}
+
+.sign-up-btn:hover {
+  background-color: white;
+  color: #8e2de2;
+  border: none;
+}

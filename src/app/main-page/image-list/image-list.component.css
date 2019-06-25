@@ -1,0 +1,26 @@
+.main-page-search-box {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 87vw;
+  margin: 0vh 3vw 5vh 3vw;
+}
+
+.form-control {
+  padding: 2vh;
+}
+
+.main-page-search-btn {
+  border-color: #080708;
+  color: white;
+  background: #080708;
+}
+
+.images-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+
+.image-box {
+  cursor: pointer;
+}

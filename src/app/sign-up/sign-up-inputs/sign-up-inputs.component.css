@@ -1,0 +1,28 @@
+.sign-up-inputs-box {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 3vh;
+}
+
+.sign-up-input {
+  border-radius: 2px;
+  border: none;
+  width: 25vw;
+  height: 6vh;
+  padding-left: 1vw;
+}
+
+@media (max-width: 425px) {
+  .sign-up-input {
+    width: 80vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sign-up-input {
+    width: 40vw;
+  }
+}
