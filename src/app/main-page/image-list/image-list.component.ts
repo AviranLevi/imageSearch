@@ -10,29 +10,13 @@ import { Image } from "../image.interface";
 export class ImageListComponent implements OnInit {
   images: Image[];
 
-  // imageData(data) {
-  //   data.hits.map(i => {
-  //     const imageModel = new Image(
-  //       i.likes,
-  //       i.comments,
-  //       i.webformatURL,
-  //       i.largeImageURL
-  //     );
-  //     this.images.push(imageModel);
-  //   });
-  // }
+  constructor(private imageService: ImageService) {}
 
-  constructor(private _imageService: ImageService) {}
+  ngOnInit() {
+    this.images = this.imageService.getImages();
+  }
 
-  // searchImages(query: string) {
-  //   return this._imageService
-  //     .getImage(query)
-  //     .subscribe(
-  //       data => this.imageData(data),
-  //       error => this.handleError(error),
-  //       () => console.log("request complete")
-  //     );
-  // }
-
-  ngOnInit() {}
+  searchImage(query) {
+    this.imageService.searchImages(query);
+  }
 }

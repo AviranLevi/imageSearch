@@ -1,17 +1,16 @@
+import { Injectable } from "@angular/core";
 import { User } from "./sign-up.interface";
-import { EventEmitter } from "@angular/core";
-
+import { Subject } from "rxjs";
+import { take } from "rxjs/operators";
+@Injectable()
 export class SignUpService {
-  userCreated = new EventEmitter<User[]>();
-  users: User[] = [];
+  user$: Subject<User> = new Subject();
 
   getUsers() {
-    return this.users.slice();
+    return this.user$.pipe(take(1));
   }
 
   addNewUser(user: User) {
-    this.users.push(user);
-    this.userCreated.emit(this.users.slice());
-    console.log(this.users);
+    this.user$.next(user);
   }
 }

@@ -2,7 +2,7 @@
   <div class="container-fluid main-page-container">
     <div class="header">
       <h1 class="logo">ImageSearch</h1>
-      <div class="username" *ngFor="let user of users">
+      <div class="username" *ngIf="user$ | async as user">
         {{ user.userName }}
       </div>
     </div>

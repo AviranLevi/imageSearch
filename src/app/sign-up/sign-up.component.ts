@@ -1,8 +1,7 @@
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SignUpService } from "./sign-up.service";
 import { User } from "./sign-up.interface";
 import { Component, OnInit } from "@angular/core";
-import { MustMatch } from "./helpers/must-match.validator";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-sign-up",
@@ -10,15 +9,11 @@ import { MustMatch } from "./helpers/must-match.validator";
   styleUrls: ["./sign-up.component.css"]
 })
 export class SignUpComponent implements OnInit {
-  users: User[];
+  user$: Observable<User>;
 
   constructor(private signupService: SignUpService) {}
 
   ngOnInit() {
-    this.users = this.signupService.getUsers();
-
-    this.signupService.userCreated.subscribe((user: User[]) => {
-      this.users = user;
-    });
+    this.user$ = this.signupService.getUsers();
   }
 }
