@@ -10,10 +10,8 @@ export class SignUpService {
   }
 
   addNewUser(user: User) {
-    if (user.password === user.confirmPassword) {
-      this.users.push(user);
-      this.userCreated.emit(this.users.slice());
-      console.log(this.users);
-    }
+    this.users.push(user);
+    this.userCreated.emit(this.users.slice());
+    console.log(this.users);
   }
 }

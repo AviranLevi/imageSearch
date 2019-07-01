@@ -84,7 +84,7 @@
 
       <button
         class="sign-up-btn"
-        (click)="signUpForm.valud ? addUser() : null"
+        (click)="signUpForm.valid ? addUser() : null"
         [routerLink]="signUpForm.valid ? ['/home'] : null"
       >
         Sign Up

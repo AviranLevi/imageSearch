@@ -22,10 +22,6 @@ export class ImageListComponent implements OnInit {
   //   });
   // }
 
-  handleError(error) {
-    console.log(error);
-  }
-
   constructor(private _imageService: ImageService) {}
 
   // searchImages(query: string) {
