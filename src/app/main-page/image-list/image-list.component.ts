@@ -16,7 +16,7 @@ export class ImageListComponent implements OnInit {
     this.images = this.imageService.getImages();
   }
 
-  searchImage(query) {
+  searchImages(query) {
     this.imageService.searchImages(query);
   }
 }

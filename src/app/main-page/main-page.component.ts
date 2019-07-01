@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
-import { SignUpService } from "./../sign-up/sign-up.service";
 import { Component, OnInit } from "@angular/core";
 import { User } from "../sign-up/sign-up.interface";
+import { UserService } from "../shared/user.service";
 
 @Component({
   selector: "app-main-page",
@@ -11,9 +11,9 @@ import { User } from "../sign-up/sign-up.interface";
 export class MainPageComponent implements OnInit {
   user$: Observable<User>;
 
-  constructor(private signUpService: SignUpService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.user$ = this.signUpService.getUsers();
+    this.user$ = this.userService.getUsers();
   }
 }

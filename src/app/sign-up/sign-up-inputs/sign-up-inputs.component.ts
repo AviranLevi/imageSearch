@@ -1,5 +1,5 @@
 import { MustMatch } from "./../helpers/must-match.validator";
-import { SignUpService } from "./../sign-up.service";
+import { UserService } from "../../shared/user.service";
 import { User } from "./../sign-up.interface";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -14,7 +14,7 @@ export class SignUpInputsComponent implements OnInit {
   signUp = false;
 
   constructor(
-    private signUpService: SignUpService,
+    private userService: UserService,
     private formBuilder: FormBuilder
   ) {
     this.createForm();
@@ -54,6 +54,6 @@ export class SignUpInputsComponent implements OnInit {
   }
 
   addUser() {
-    this.signUpService.addNewUser(this.formValue);
+    this.userService.addNewUser(this.formValue);
   }
 }
