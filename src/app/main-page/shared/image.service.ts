@@ -1,3 +1,4 @@
+import { Image } from "./../image.interface";
 import { Http, Headers } from "@angular/http";
 import { environment } from "./../../../environments/environment";
 import { Injectable } from "@angular/core";
@@ -9,6 +10,8 @@ export class ImageService {
   private API_KEY: string = environment.PIXABAY_API_KEY;
   private API_URL: string = environment.PIXABAY_API_URL;
   private URL: string = this.API_URL + this.API_KEY + "&q=";
+
+  images: Image[] = [];
 
   constructor(private _http: Http) {}
 

@@ -1,29 +1,94 @@
-<form class="sign-up-inputs-box">
-  <input
-    class="sign-up-input username-input"
-    placeholder="Username"
-    required
-    #userNameInput
-    minlength="4"
-  />
-  <input
-    type="email"
-    class="sign-up-input email-input"
-    placeholder="Email"
-    required
-    #userEmailInput
-  />
-  <input
-    class="sign-up-input pswd-input"
-    placeholder="Password"
-    required
-    minlength="6"
-    #userPswdInput
-  />
-  <input
-    class="sign-up-input pswd-input"
-    placeholder="Confirm Password"
-    required
-    #userPswdConfirmed
-  />
-</form>
+<div class="sign-up-inputs-btn-layer">
+  <form
+    class="sign-up-inputs-box"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="username-box">
+      <input
+        class="sign-up-input username-input"
+        placeholder="Username"
+        formControlName="userName"
+      />
+      <div *ngIf="signUp && f.userName.errors" class="required-field">
+        <div *ngIf="f.userName.errors.required">
+          Username is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="email-box">
+      <input
+        formControlName="email"
+        type="email"
+        class="sign-up-input email-input"
+        placeholder="Email"
+      />
+      <div *ngIf="signUp && f.email.errors" class="required-field">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">
+          Email must be a valid email address
+        </div>
+      </div>
+    </div>
+    <div class="password-box">
+      <input
+        type="password"
+        class="sign-up-input pswd-input"
+        placeholder="Password"
+        formControlName="password"
+      />
+
+      <div *ngIf="signUp && f.password.errors" class="required-field">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">
+          Password must be at least 6 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="confirmed-password-box">
+      <input
+        type="password"
+        class="sign-up-input pswd-input"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+      />
+
+      <div *ngIf="signUp && f.confirmPassword.errors" class="required-field">
+        <div *ngIf="f.confirmPassword.errors.required">
+          Confirm Password is required
+        </div>
+        <div *ngIf="f.confirmPassword.hasError('NoPassswordMatch')">
+          Passwords must match
+        </div>
+      </div>
+    </div>
+
+    <div class="sign-up-buttons-box">
+      <div class="custom-control custom-switch">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="customSwitches"
+          formControlName="acceptTerms"
+        />
+        <label class="custom-control-label" for="customSwitches"
+          >I agree with terms of use and privacy
+        </label>
+
+        <div *ngIf="signUp && f.acceptTerms.errors" class="required-field">
+          Must accept the terms
+        </div>
+      </div>
+
+      <button
+        class="sign-up-btn"
+        (click)="signUpForm.valud ? addUser() : null"
+        [routerLink]="signUpForm.valid ? ['/home'] : null"
+      >
+        Sign Up
+      </button>
+    </div>
+  </form>
+</div>

@@ -26,19 +26,20 @@
   color: white;
   font-family: "Lobster", cursive;
   justify-self: start;
-  margin-left: 2vw;
+  margin-left: 5vw;
 }
 
 .sign-up-box {
-  height: 70vh;
-  padding: 0 3vw;
+  height: fit-content;
+  padding: 3vh 3vw;
   color: white;
   display: grid;
   align-self: flex-start;
   justify-items: center;
   align-items: center;
-  grid-template-rows: 15% 55% 30%;
+  grid-template-rows: 18% 82%;
   border: white 1px solid;
+  margin-bottom: 5vh;
 }
 
 .sign-up-title {

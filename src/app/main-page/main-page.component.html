@@ -1,6 +1,11 @@
 <div class="main-page">
   <div class="container-fluid main-page-container">
-    <h1 class="logo">ImageSearch</h1>
+    <div class="header">
+      <h1 class="logo">ImageSearch</h1>
+      <div class="username" *ngFor="let user of users">
+        {{ user.name }}
+      </div>
+    </div>
 
     <app-image-list></app-image-list>
   </div>

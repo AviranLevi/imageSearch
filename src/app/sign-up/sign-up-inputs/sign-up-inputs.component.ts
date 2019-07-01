@@ -1,4 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { MustMatch } from "./../helpers/must-match.validator";
+import { SignUpService } from "./../sign-up.service";
+import { User } from "./../sign-up.interface";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-sign-up-inputs",
@@ -6,21 +10,50 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./sign-up-inputs.component.css"]
 })
 export class SignUpInputsComponent implements OnInit {
-  @Output() userCreted = new EventEmitter<{
-    userName: string;
-    userEmail: string;
-    userPassword: string;
-  }>();
+  signUpForm: FormGroup;
+  signUp = false;
 
-  constructor() {}
+  constructor(
+    private signUpService: SignUpService,
+    private formBuilder: FormBuilder
+  ) {
+    this.createForm();
+  }
 
   ngOnInit() {}
 
-  createUser(userNameInput, userEmailInput, userPswdInput) {
-    this.userCreted.emit({
-      userName: userNameInput.value,
-      userEmail: userEmailInput.value,
-      userPassword: userPswdInput
-    });
+  createForm() {
+    this.signUpForm = this.formBuilder.group(
+      {
+        userName: [null, Validators.required],
+        email: [null, [Validators.required, Validators.email]],
+        password: [null, [Validators.required, Validators.minLength(6)]],
+        confirmPassword: [null, Validators.required],
+        acceptTerms: [false, Validators.requiredTrue]
+      },
+      {
+        validator: MustMatch.passwordMatchValidator
+      }
+    );
+  }
+
+  get formValue() {
+    return this.signUpForm.value as User;
+  }
+
+  get f() {
+    return this.signUpForm.controls;
+  }
+
+  onSubmit() {
+    this.signUp = true;
+
+    if (this.signUpForm.invalid) {
+      return;
+    }
+  }
+
+  addUser() {
+    this.signUpService.addNewUser(this.formValue);
   }
 }

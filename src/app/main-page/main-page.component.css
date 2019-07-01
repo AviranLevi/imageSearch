@@ -18,13 +18,28 @@
   height: fit-content;
 }
 
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  align-items: center;
+  height: 10vh;
+  margin: 5vh 0;
+}
+
 .logo {
   color: white;
   font-family: "Lobster", cursive;
   justify-self: start;
-  margin: 5vh 2vw;
-  align-self: center;
-  height: 10vh;
+  margin-left: 5vw;
+}
+
+.username {
+  justify-self: end;
+  margin-right: 2vw;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 5vw;
 }
 
 @media (max-width: 425px) {

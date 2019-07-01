@@ -9,3 +9,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.spinner {
+  position: absolute;
+  top: 48vh;
+  left: 48vw;
+}

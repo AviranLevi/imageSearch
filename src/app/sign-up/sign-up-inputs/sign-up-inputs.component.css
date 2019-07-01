@@ -1,3 +1,10 @@
+.sign-up-inputs-btn-layer {
+  height: fit-content;
+  display: grid;
+  grid-gap: 3vh;
+  padding: 3vh 0;
+}
+
 .sign-up-inputs-box {
   display: grid;
   height: 100%;
@@ -15,13 +22,44 @@
   padding-left: 1vw;
 }
 
-@media (max-width: 425px) {
+.sign-up-buttons-box {
+  display: grid;
+  grid-gap: 5vh;
+}
+
+.sign-up-btn {
+  border: none;
+  color: white;
+  text-transform: capitalize;
+  background: none;
+  border: white 1px solid;
+  border-radius: 3px;
+  height: 100%;
+  padding: 1vh 0;
+  transition: 0.4s;
+}
+
+.sign-up-btn:hover {
+  background-color: white;
+  color: #8e2de2;
+  border: none;
+}
+
+.sign-up-btn:disabled {
+  opacity: 0.2;
+}
+
+.required-field {
+  color: rgb(255, 64, 64);
+}
+
+@media (max-width: 426px) {
   .sign-up-input {
     width: 80vw;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 427px) and (max-width: 1024px) {
   .sign-up-input {
     width: 40vw;
   }
