@@ -3,6 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { User } from "../sign-up/sign-up.interface";
 import { UserService } from "../shared/user.service";
 
+import { tap } from "rxjs/operators";
+
 @Component({
   selector: "app-main-page",
   templateUrl: "./main-page.component.html",
@@ -11,9 +13,9 @@ import { UserService } from "../shared/user.service";
 export class MainPageComponent implements OnInit {
   user$: Observable<User>;
 
-  constructor(private userService: UserService) {}
-
-  ngOnInit() {
-    this.user$ = this.userService.getUsers();
+  constructor(private userService: UserService) {
+    this.user$ = userService.user$.pipe(tap(user => console.log(user)));
   }
+
+  ngOnInit() {}
 }

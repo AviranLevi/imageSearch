@@ -11,9 +11,9 @@ import { Observable } from "rxjs";
 export class SignUpComponent implements OnInit {
   user$: Observable<User>;
 
-  constructor(private userService: UserService) {}
-
-  ngOnInit() {
-    this.user$ = this.userService.getUsers();
+  constructor(private userService: UserService) {
+    this.user$ = userService.user$;
   }
+
+  ngOnInit() {}
 }

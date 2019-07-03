@@ -15,7 +15,7 @@
 </div>
 
 <div class="images-container">
-  <div *ngFor="let image of images" class="image-box">
-    <img src="{{ image.webFormatImageURL }}" class="img-thumbnail" />
+  <div *ngFor="let image of images$ | async" class="image-box">
+    <img src="{{ image.webformatURL }}" class="img-thumbnail" />
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ImageService } from "../shared/image.service";
-import { Image } from "../image.interface";
+import { ImageService, Image } from "../../shared/image.service";
+import { Observable, BehaviorSubject, Subject } from "rxjs";
+import { switchMap, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-image-list",
@@ -8,15 +9,20 @@ import { Image } from "../image.interface";
   styleUrls: ["./image-list.component.css"]
 })
 export class ImageListComponent implements OnInit {
-  images: Image[];
+  images$: Observable<Image[]> = new BehaviorSubject<Image[]>([]);
+  query$ = new Subject<string>();
 
   constructor(private imageService: ImageService) {}
 
   ngOnInit() {
-    this.images = this.imageService.getImages();
+    this.images$ = this.query$.pipe(
+      // debounceTime(500),
+      switchMap(query => this.imageService.search(query)),
+      tap(console.log)
+    );
   }
 
   searchImages(query) {
-    this.imageService.searchImages(query);
+    this.query$.next(query);
   }
 }
