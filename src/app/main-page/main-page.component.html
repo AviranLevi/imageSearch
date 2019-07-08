@@ -1,5 +1,5 @@
 <div class="main-page">
-  <div class="container-fluid main-page-container">
+  <div class="container-fluid main-page-container" appPopupToggle>
     <div class="header">
       <h1 class="logo">ImageSearch</h1>
       <div class="username" *ngIf="user$ | async as user">
@@ -7,6 +7,7 @@
       </div>
     </div>
 
-    <app-image-list></app-image-list>
+    <app-image-list (imageSelected)="onImageSelect($event)"></app-image-list>
   </div>
 </div>
+<app-image-popup [image]="imageSelected"></app-image-popup>

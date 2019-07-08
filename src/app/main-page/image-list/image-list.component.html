@@ -15,7 +15,29 @@
 </div>
 
 <div class="images-container">
-  <div *ngFor="let image of images$ | async" class="image-box">
+  <div
+    *ngFor="let image of images$ | async"
+    class="image-box"
+    (click)="onSelect(image)"
+  >
     <img src="{{ image.webformatURL }}" class="img-thumbnail" />
   </div>
 </div>
+
+<div *ngIf="!(images$ | async)" class="images-will-be-here">
+  Search to display images...
+</div>
+
+<button
+  class="btn-primary btn"
+  *ngIf="(images$ | async)?.length > 0"
+  (click)="loadMore(searchQuery)"
+>
+  load more
+</button>
+
+<div *ngIf="(images$ | async)?.length === 0" class="images-will-be-here">
+  No more images to display...
+</div>
+
+<app-image-popup></app-image-popup>

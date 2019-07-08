@@ -1,0 +1,17 @@
+<div class="image-popup-layer" *ngIf="image">
+  <div class="image-popup-box card mb-3">
+    <div class="image-popup-img-box">
+      <span (click)="close()" class="image-popup-close-btn"
+        ><i class="fas fa-times-circle"></i
+      ></span>
+
+      <img [src]="image.largeImageURL" class="image-popup-img" />
+    </div>
+    <div class="card-body image-popup-details">
+      <p class="card-text image-popup-details-text">
+        <span><i class="fas fa-heart"></i> {{ image.likes }}</span>
+        <span><i class="fas fa-comment"></i> {{ image.comments }}</span>
+      </p>
+    </div>
+  </div>
+</div>

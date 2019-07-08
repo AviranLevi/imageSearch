@@ -25,3 +25,8 @@
 .image-box {
   cursor: pointer;
 }
+
+.images-will-be-here {
+  text-align: center;
+  opacity: 0.6;
+}

@@ -1,3 +1,4 @@
+import { Image } from "./../shared/image.service";
 import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { User } from "../sign-up/sign-up.interface";
@@ -12,10 +13,16 @@ import { tap } from "rxjs/operators";
 })
 export class MainPageComponent implements OnInit {
   user$: Observable<User>;
+  imageSelected: Image;
+  selected = false;
 
   constructor(private userService: UserService) {
-    this.user$ = userService.user$.pipe(tap(user => console.log(user)));
+    this.user$ = userService.user$;
   }
 
   ngOnInit() {}
+
+  onImageSelect(image: Image) {
+    this.imageSelected = image;
+  }
 }

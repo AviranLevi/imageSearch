@@ -10,8 +10,10 @@ import { SignUpInputsComponent } from "./sign-up/sign-up-inputs/sign-up-inputs.c
 import { MainPageComponent } from "./main-page/main-page.component";
 import { ImageListComponent } from "./main-page/image-list/image-list.component";
 
+import { PopupDirective } from "./shared/popup.directive";
 import { ImageService } from "./shared/image.service";
 import { UserService } from "./shared/user.service";
+import { ImagePopupComponent } from "./main-page/image-popup/image-popup.component";
 
 const appRoutes: Routes = [
   { path: "", component: SignUpComponent },
@@ -23,7 +25,9 @@ const appRoutes: Routes = [
     SignUpComponent,
     SignUpInputsComponent,
     MainPageComponent,
-    ImageListComponent
+    ImageListComponent,
+    ImagePopupComponent,
+    PopupDirective
   ],
   imports: [
     BrowserModule,
