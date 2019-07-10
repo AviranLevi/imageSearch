@@ -14,6 +14,7 @@ import { PopupDirective } from "./shared/popup.directive";
 import { ImageService } from "./shared/image.service";
 import { UserService } from "./shared/user.service";
 import { ImagePopupComponent } from "./main-page/image-popup/image-popup.component";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 const appRoutes: Routes = [
   { path: "", component: SignUpComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   providers: [ImageService, UserService],
   bootstrap: [AppComponent]

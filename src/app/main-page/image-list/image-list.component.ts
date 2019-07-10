@@ -1,13 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { ImageService, Image } from "../../shared/image.service";
-import {
-  combineLatest,
-  Observable,
-  BehaviorSubject,
-  Subject,
-  ReplaySubject
-} from "rxjs";
-import { switchMap, tap, scan, map, count } from "rxjs/operators";
+import { Observable, BehaviorSubject, Subject, of } from "rxjs";
+import { switchMap, tap, scan } from "rxjs/operators";
 
 @Component({
   selector: "app-image-list",
@@ -19,6 +13,11 @@ export class ImageListComponent implements OnInit {
   // page$ = new BehaviorSubject<void>(undefined);
   query$ = new Subject<string>();
   hasMoreToLoad: boolean;
+  clearSearch = new BehaviorSubject<any>([]);
+
+  throttle = 300;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
 
   @Output() imageSelected = new EventEmitter<Image>();
 
@@ -40,18 +39,23 @@ export class ImageListComponent implements OnInit {
       tap(images => {
         this.hasMoreToLoad = !!images.length;
       }),
+
       scan((imgs, imgsList) => [...imgs, ...imgsList])
     );
   }
 
   searchImages(query) {
     // this.page$ = new BehaviorSubject<void>(undefined);
+    this.query$ === query
+      ? (this.images$ = new BehaviorSubject<Image[]>([]))
+      : null;
+
     this.query$.next(query);
   }
 
-  loadMore(query) {
+  loadMoreOnScroll(query) {
     this.imageService.nextPage();
-    this.searchImages(query);
+    this.query$.next(query);
   }
 
   onSelect(image: Image) {

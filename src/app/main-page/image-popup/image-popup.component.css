@@ -6,6 +6,7 @@
 
 .image-popup-layer {
   position: absolute;
+  position: fixed;
   max-height: 60vh;
   top: 50%;
   left: 50%;
