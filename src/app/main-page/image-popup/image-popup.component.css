@@ -7,19 +7,16 @@
 .image-popup-layer {
   position: absolute;
   position: fixed;
-  max-height: 60vh;
+  height: 80vh;
   top: 50%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
-  border-radius: 4px;
 }
 
 .image-popup-box {
   display: grid;
   grid-template-rows: 85% 15%;
   align-items: center;
-  height: 100%;
   background: none;
   border: none;
   margin: 0 !important;
@@ -32,8 +29,10 @@
 
 .image-popup-img {
   justify-self: center;
-  max-height: 700px;
-  max-width: 1000px;
+  max-height: 500px;
+  max-width: 800px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .image-popup-details-title {
@@ -46,7 +45,7 @@
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   height: inherit;
-  padding: 0;
+  padding: 2vh 0;
 }
 
 .image-popup-details-text {
@@ -61,8 +60,8 @@
 .image-popup-close-btn {
   color: white;
   position: absolute;
-  top: 0%;
-  left: 93%;
+  top: calc(0% + 1%);
+  left: calc(100% - 8%);
   font-size: 25px;
   transition: 0.4s;
   cursor: pointer;
@@ -70,4 +69,44 @@
 
 .image-popup-close-btn:hover {
   color: black;
+}
+
+@media (min-width: 651px) and (max-width: 769px) {
+  .image-popup-img {
+    max-width: 630px;
+  }
+}
+
+@media (min-width: 427px) and (max-width: 650px) {
+  .image-popup-img {
+    max-width: 400px;
+  }
+
+  .image-popup-close-btn {
+    top: calc(0% + 3%);
+  }
+}
+
+@media (max-width: 426px) {
+  .image-popup-img {
+    max-width: 350px;
+  }
+  .image-popup-details-text {
+    width: 50%;
+  }
+
+  .image-popup-close-btn {
+    left: calc(100% - 10%);
+  }
+}
+
+@media (max-width: 320px) {
+  .image-popup-img {
+    justify-self: center;
+    max-width: 300px;
+  }
+
+  .image-popup-close-btn {
+    left: calc(100% - 10%);
+  }
 }
