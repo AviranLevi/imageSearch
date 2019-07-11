@@ -23,12 +23,12 @@
   (scrolled)="loadMoreOnScroll(searchQuery)"
 >
   <div class="images-container">
-    <div
-      *ngFor="let image of images$ | async"
-      class="image-box"
-      (click)="onSelect(image)"
-    >
-      <img src="{{ image.webformatURL }}" class="img-thumbnail" />
+    <div *ngFor="let image of images$ | async" class="image-box">
+      <img
+        src="{{ image.webformatURL }}"
+        class="img-thumbnail image-list-img"
+        (click)="onSelect(image)"
+      />
     </div>
   </div>
 </div>
