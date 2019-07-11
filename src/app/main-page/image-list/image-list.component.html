@@ -37,6 +37,9 @@
   Search to display images...
 </div>
 
-<div *ngIf="(images$ | async)?.length === 0" class="images-will-be-here">
+<div
+  *ngIf="!hasMoreToLoad && (images$ | async)"
+  class="no-more-images images-will-be-here"
+>
   There're no images to display...
 </div>

@@ -10,7 +10,9 @@ import { switchMap, tap, scan } from "rxjs/operators";
 })
 export class ImageListComponent implements OnInit {
   images$: Observable<Image[]> = new BehaviorSubject<Image[]>([]);
+  imagesReset$: Observable<Image[]> = new BehaviorSubject<Image[]>(new Array());
   // page$ = new BehaviorSubject<void>(undefined);
+
   query$ = new Subject<string>();
   hasMoreToLoad: boolean;
   clearSearch = new BehaviorSubject<any>([]);
@@ -38,6 +40,7 @@ export class ImageListComponent implements OnInit {
       switchMap(query => this.imageService.search(query)),
       tap(images => {
         this.hasMoreToLoad = !!images.length;
+        console.log(this.hasMoreToLoad);
       }),
 
       scan((imgs, imgsList) => [...imgs, ...imgsList])
@@ -46,9 +49,8 @@ export class ImageListComponent implements OnInit {
 
   searchImages(query) {
     // this.page$ = new BehaviorSubject<void>(undefined);
-    this.query$ === query
-      ? (this.images$ = new BehaviorSubject<Image[]>([]))
-      : null;
+
+    this.query$ !== query ? this.images$ : null;
 
     this.query$.next(query);
   }

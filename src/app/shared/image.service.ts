@@ -30,7 +30,6 @@ export class ImageService {
       .get<Response>(this.URL + query + `&page=${this.page}`)
       .pipe(
         map(data => {
-          console.log(data);
           const res: Response = {
             hits: data.hits,
             totalHits: data.totalHits
@@ -42,7 +41,6 @@ export class ImageService {
   }
 
   nextPage() {
-    console.log(this.page);
     return this.page++;
   }
 }
