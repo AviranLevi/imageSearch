@@ -4,8 +4,6 @@ import { Component, OnInit } from "@angular/core";
 import { User } from "../sign-up/sign-up.interface";
 import { UserService } from "../shared/user.service";
 
-import { tap } from "rxjs/operators";
-
 @Component({
   selector: "app-main-page",
   templateUrl: "./main-page.component.html",
