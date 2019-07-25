@@ -20,6 +20,7 @@ export class ImageListComponent implements OnInit {
   throttle = 300;
   scrollDistance = 1;
   scrollUpDistance = 2;
+  searchQuery: any;
 
   @Output() imageSelected = new EventEmitter<Image>();
 
